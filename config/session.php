@@ -13,6 +13,7 @@
 // | 会话设置
 // +----------------------------------------------------------------------
 
+use think\facade\Env;
 return [
     'id'             => '',
     // SESSION_ID的提交变量,解决flash上传跨域
@@ -20,7 +21,13 @@ return [
     // SESSION 前缀
     'prefix'         => 'think',
     // 驱动方式 支持redis memcache memcached
-    'type'           => '',
+    'type'           => Env::get('redis.type',''),
     // 是否自动开启 SESSION
     'auto_start'     => true,
+    // redis主机
+    'host'           => Env::get('redis.host',''),
+    // redis端口
+    'port'           => Env::get('redis.port',''),
+    // 密码
+    'password'       => Env::get('redis.password',''),
 ];
